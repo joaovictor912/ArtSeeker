@@ -1,18 +1,18 @@
 #O Art Seeker é um sistema de busca semântica inteligente que permite encontrar obras de arte a partir de descrições em linguagem natural.
-Utilizando embeddings de linguagem e similaridade de cossenos, o modelo entende o significado do texto da consulta e retorna as obras mais relevantes de acordo com seu conteúdo descritivo.
 
-#A base de dados utilizada é a API pública do Art Institute of Chicago, contendo milhares de obras catalogadas.
+##  Objetivo do Projeto
 
-#Tecnologias utilizadas:
-Python 
-Sentence Transformers (modelo paraphrase-multilingual-mpnet-base-v2) para geração de embeddings
-FAISS (Facebook AI Similarity Search) para indexação vetorial e busca eficiente
-Requests para coleta de dados da API
-Cache local para otimizar requisições e reduzir latência
+O Art Seeker é uma Inteligência Artificial projetada para realizar buscas semânticas em obras de arte.
+Em vez de depender apenas de palavras exatas, o sistema entende descrições em linguagem natural (ex.: “pinturas renascentistas com anjos e temas religiosos”) e retorna obras que melhor correspondem ao contexto.
+O objetivo não é apenas localizar títulos específicos, mas permitir exploração inteligente de acervos artísticos, reconhecendo estilos, períodos históricos, artistas e características descritivas.
 
-#Como funciona
-Coleta dos dados: informações sobre obras de arte são obtidas via API do Art Institute of Chicago.
-Geração dos embeddings: os textos descritivos das obras são convertidos em vetores numéricos usando Sentence Transformers.
-Indexação no FAISS: os embeddings são armazenados em um índice vetorial otimizado para busca por similaridade.
-Consulta semântica: o usuário digita uma descrição em linguagem natural (ex.: “pintura impressionista com paisagem noturna”).
-Busca por similaridade de cossenos: o sistema compara o embedding da consulta com os embeddings das obras e retorna as mais relevantes.
+## Lógica e Algoritmos
+
+  - O projeto combina técnicas modernas de Processamento de Linguagem Natural (PLN) com busca vetorial:
+      .Pré-processamento dos dados: leitura do JSON contendo as obras; Criação de uma descrição unificada para cada obra (título, artista, data, estilo).
+
+  - Geração de Embeddings: uso do modelo intfloat/multilingual-e5-large para transformar textos em vetores numéricos;Normalização dos vetores para permitir cálculos de similaridade por cosseno.
+
+  - Indexação FAISS: os embeddings são armazenados em um índice FAISS para buscas rápidas e escaláveis
+  
+  - Re-ranking com CrossEncoder: após a busca inicial, os resultados são refinados com cross-encoder/ms-marco-MiniLM-L-6-v2, que faz uma análise mais detalhada da relação entre a consulta e cada obra candidata.

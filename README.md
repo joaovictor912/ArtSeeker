@@ -16,3 +16,8 @@ O objetivo não é apenas localizar títulos específicos, mas permitir explora�
   - Indexação FAISS: os embeddings são armazenados em um índice FAISS para buscas rápidas e escaláveis
   
   - Re-ranking com CrossEncoder: após a busca inicial, os resultados são refinados com cross-encoder/ms-marco-MiniLM-L-6-v2, que faz uma análise mais detalhada da relação entre a consulta e cada obra candidata.
+
+##Como Executar
+Clique no botão "Open in Colab" no topo deste notebook.
+No ambiente do Colab, execute todas as células em ordem (Ambiente de execução -> Executar tudo).
+O resultado final, com a tabela de probabilidades e o gráfico, será exibido ao final da execução.
